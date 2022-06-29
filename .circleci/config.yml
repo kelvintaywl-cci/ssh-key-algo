@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.7.5
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          name: inspect OpenSSH client version
+          command: |
+            ssh -V
+      - run:
+          name: list available HostKeyAlgorithm
+          command: |
+            ssh -Q key
